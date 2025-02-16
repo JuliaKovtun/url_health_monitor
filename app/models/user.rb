@@ -5,5 +5,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :url_monitors
+  has_many :url_monitors, dependent: :destroy
 end
