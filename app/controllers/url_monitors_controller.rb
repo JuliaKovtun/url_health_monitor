@@ -1,4 +1,4 @@
-class UrlMonitorController < ApplicationController
+class UrlMonitorsController < ApplicationController
   before_action :set_url_monitor, only: %i[show update destroy]
 
 
