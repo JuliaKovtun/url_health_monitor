@@ -4,7 +4,11 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
+  # TODO: what if login wasn't successful?
   def respond_with(current_user, _opts = {})
+    token = request.env['warden-jwt_auth.token']
+    response.set_header('Authorization', "Bearer #{token}")
+
     render json: {
       status: { 
         code: 200, message: 'Logged in successfully.',
