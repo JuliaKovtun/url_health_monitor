@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class UrlMonitor < ApplicationRecord
-  enum status: { up_status: 0, down_status: 1 }
+  enum status: { up: 0, down: 1 }, _prefix: :status
 
   has_many :checks, dependent: :destroy
   belongs_to :user
 
-  # validates :url, presence: true, url: true
+  validates :url, :check_interval, :name, presence: true
   validates :check_interval, numericality: { greater_than_or_equal_to: 5 }
 
-  # TODO
   def perform_check
     start_time = Time.current
     response = HTTParty.get(url)
