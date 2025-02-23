@@ -3,7 +3,8 @@ class UrlMonitorsController < ApplicationController
 
 
   def index
-    render json: current_user.url_monitors.includes(:checks)
+    url_monitors = current_user.url_monitors.includes(:checks).order(created_at: :desc)
+    render json: url_monitors, each_serializer: UrlMonitorSerializer
   end
 
   def create

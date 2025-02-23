@@ -22,7 +22,8 @@ gem 'devise', '~> 4.9'
 # Sidekiq for background jobs
 gem 'sidekiq', '~> 7.3'
 
-gem 'jsonapi-serializer'
+# Serializers
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 5.3'

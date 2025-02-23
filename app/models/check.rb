@@ -3,13 +3,13 @@
 class Check < ApplicationRecord
   belongs_to :url_monitor
 
-  # after_commit :broadcast_status_update, on: [:create]
+  after_commit :broadcast_status_update, on: [:create]
 
   private
 
   def broadcast_status_update
     ActionCable.server.broadcast(
-      "status_updates",
+      "check_updates",
       {
         monitor_id: url_monitor.id,
         url: url_monitor.url,
