@@ -12,10 +12,17 @@ class Check < ApplicationRecord
       "check_updates",
       {
         monitor_id: url_monitor.id,
-        url: url_monitor.url,
         status: url_monitor.status,
         last_checked_at: url_monitor.last_checked_at,
-        response_time: response_time
+          check: {
+            id:,
+            status_code:,
+            response_time:,
+            checked_at:,
+            success:,
+            url_monitor_id:,
+            error_message:
+          }
       }
     )
   end
